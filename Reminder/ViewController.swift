@@ -2,18 +2,32 @@
 //  ViewController.swift
 //  Reminder
 //
-//  Created by Leonardo Gabriel Lopes Gimenes on 14/02/26.
+//  Created by Leonardo Gabriel Lopes Gimenes on 04/03/26.
 //
-
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .red
+        setupView()
+        
     }
-
-
+    
+    private func setupView(){
+        view.backgroundColor = .green
+        setHierarchy()
+        setConstraints()
+        
+    }
+    
+    private func setHierarchy(){
+        
+    }
+    
+    private func setConstraints(){
+        
+    }
 }
-
