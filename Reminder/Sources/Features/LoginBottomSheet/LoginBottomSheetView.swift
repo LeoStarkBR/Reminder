@@ -59,6 +59,7 @@ class LoginBottomSheetView: UIView {
     private func setupUI() {
         backgroundColor = .white
         layer.cornerRadius = Metrics.small
+        addSubview(handleArea)
         addSubview(titleLabel)
         addSubview(emailTextField)
         addSubview(passwordTextField)
@@ -84,7 +85,7 @@ class LoginBottomSheetView: UIView {
             
             loginButtom.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: Metrics.medium),
             loginButtom.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.medium),
-            loginButtom.leadingAnchor.constraint(equalTo: leadingAnchor, constant: -Metrics.medium),
+            loginButtom.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.medium),
             loginButtom.heightAnchor.constraint(equalToConstant: 50),
             
         ])
