@@ -67,7 +67,27 @@ class LoginBottomSheetView: UIView {
     }
     
     private func setupConstraints() {
-        
+        NSLayoutConstraint.activate([
+            handleArea.topAnchor.constraint(equalTo: topAnchor, constant: -Metrics.small),
+            handleArea.centerXAnchor.constraint(equalTo: centerXAnchor),
+            handleArea.widthAnchor.constraint(equalToConstant: 40),
+            handleArea.heightAnchor.constraint(equalToConstant: 6),
+            
+            titleLabel.topAnchor.constraint(equalTo: handleArea.bottomAnchor, constant: Metrics.medium),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.medium),
+            
+            emailTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Metrics.medium),
+            emailTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.medium),
+            
+            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: Metrics.medium),
+            passwordTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.medium),
+            
+            loginButtom.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: Metrics.medium),
+            loginButtom.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.medium),
+            loginButtom.leadingAnchor.constraint(equalTo: leadingAnchor, constant: -Metrics.medium),
+            loginButtom.heightAnchor.constraint(equalToConstant: 50),
+            
+        ])
     }
     
     required init?(coder: NSCoder) {
