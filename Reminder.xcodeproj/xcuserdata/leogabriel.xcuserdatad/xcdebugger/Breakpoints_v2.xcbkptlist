@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D1B66AF0-B9F0-4C67-B32B-862087401D63"
-            shouldBeEnabled = "No"
+            uuid = "A25E2227-2BD5-4557-9B86-DB13345EA041"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Reminder/Sources/Features/LoginBottomSheet/LoginBottomSheetView.swift"
+            filePath = "Reminder/Sources/Features/LoginBottomSheet/ViewModel/LoginBottomSheetViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
-            landmarkName = "loginButtonDidTapped()"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "doAuth(usernameLogin:password:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
