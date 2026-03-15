@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  Reminder
+
+  Created by Leonardo Gabriel Lopes Gimenes on 14/03/26.
+  
+*/
+
+/* MARK: - LOGIN Screen */
+"login.button.title" = "Entrar";
+"login.password.placehoder" = "senha";
+"login.email.placeholder" = "email@exemplo.com";
+"login.label.title" = "Entre para acessar suas receitas";
+"login.email.indication" = "E-mail";
+"login.senha.indication" = "Senha";
+
+/*MARK: - HOME Screen*/
+
+/*MARK: - Receipts Screen*/
+
+/*MARK: - NewReceipt Screen*/
+
+

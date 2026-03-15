@@ -12,7 +12,9 @@ class LoginBottomSheetView: UIView {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Entre para acessar suas receitas"
+        label.text = "login.label.title".localized
+        label.font = Typography.subHeading
+        label.isUserInteractionEnabled = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -20,14 +22,15 @@ class LoginBottomSheetView: UIView {
     private let handleArea: UIView = {
         let view = UIView()
         view.backgroundColor = .lightGray
-        view.layer.cornerRadius = Metrics.tiny
+        view.layer.cornerRadius = Metrics.medium
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private let emailTextField: UITextField = {
         let text = UITextField()
-        text.placeholder = "email@exemplo.com"
+        text.placeholder = "login.email.placeholder".localized
+        text.font = Typography.body
         text.borderStyle = .roundedRect
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
@@ -35,26 +38,56 @@ class LoginBottomSheetView: UIView {
     
     private let passwordTextField: UITextField = {
         let text = UITextField()
-        text.placeholder = "senha"
+        text.placeholder = "login.password.placehoder".localized
         text.borderStyle = .roundedRect
         text.isSecureTextEntry = true
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
     
+    private let emailIndicator: UILabel = {
+        let label = UILabel()
+        label.text = "login.email.indication".localized
+        label.font = Typography.body
+        label.isUserInteractionEnabled = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = Colors.greySecondary
+        return label
+    }()
+    
+    private let senhaIndicator: UILabel = {
+        let label = UILabel()
+        label.text = "login.senha.indication".localized
+        label.font = Typography.body
+        label.isUserInteractionEnabled = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = Colors.greySecondary
+        return label
+    }()
+    
     private let loginButtom: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Entrar", for: .normal)
+        button.setTitle("login.button.title".localized, for: .normal)
         button.backgroundColor = Colors.primaryRedBase
-        button.layer.cornerRadius = Metrics.tiny
+        button.layer.cornerRadius = Metrics.medium
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitleColor(.white, for: .normal)
         return button
     }()
     
     override init(frame: CGRect) {
         super .init(frame: frame)
         setupUI()
+        let exampleGest = UITapGestureRecognizer(target: self, action: #selector(exampleTaped))
+        titleLabel.addGestureRecognizer(exampleGest)
     }
+    
+    @objc
+    private func exampleTaped(){
+        print("Clicou na lbael")
+    }
+    
+    @objc
     
     private func setupUI() {
         backgroundColor = .white
@@ -64,6 +97,8 @@ class LoginBottomSheetView: UIView {
         addSubview(emailTextField)
         addSubview(passwordTextField)
         addSubview(loginButtom)
+        addSubview(senhaIndicator)
+        addSubview(emailIndicator)
         setupConstraints()
     }
     
@@ -74,19 +109,32 @@ class LoginBottomSheetView: UIView {
             handleArea.widthAnchor.constraint(equalToConstant: 40),
             handleArea.heightAnchor.constraint(equalToConstant: 6),
             
-            titleLabel.topAnchor.constraint(equalTo: handleArea.bottomAnchor, constant: Metrics.medium),
+            titleLabel.topAnchor.constraint(equalTo: handleArea.bottomAnchor, constant: Metrics.huge),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.medium),
             
-            emailTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Metrics.medium),
+            emailTextField.topAnchor.constraint(equalTo: emailIndicator.bottomAnchor, constant: Metrics.small),
             emailTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.medium),
+            emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.medium),
+            emailTextField.heightAnchor.constraint(equalToConstant: Metrics.huge),
             
-            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: Metrics.medium),
+            passwordTextField.topAnchor.constraint(equalTo: senhaIndicator.bottomAnchor, constant: Metrics.small),
             passwordTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.medium),
+            passwordTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.medium),
+            passwordTextField.heightAnchor.constraint(equalToConstant: Metrics.huge),
             
-            loginButtom.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: Metrics.medium),
+            loginButtom.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: Metrics.huge),
             loginButtom.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.medium),
             loginButtom.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.medium),
-            loginButtom.heightAnchor.constraint(equalToConstant: 50),
+            loginButtom.heightAnchor.constraint(equalToConstant: Metrics.huge),
+            
+            emailIndicator.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Metrics.huge),
+            emailIndicator.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.medium),
+            emailIndicator.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.medium),
+            
+            
+            senhaIndicator.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: Metrics.medium),
+            senhaIndicator.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.medium),
+            senhaIndicator.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.medium),
             
         ])
     }
