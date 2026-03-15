@@ -74,7 +74,7 @@ class LoginBottomSheetView: UIView {
         button.layer.cornerRadius = Metrics.medium
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(.white, for: .normal)
-        button.addTarget(LoginBottomSheetView.self, action: #selector(loginButtonDidTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(loginButtonDidTapped), for: .touchUpInside)
         button.titleLabel?.font = Typography.subHeading
         return button
     }()
@@ -82,15 +82,10 @@ class LoginBottomSheetView: UIView {
     override init(frame: CGRect) {
         super .init(frame: frame)
         setupUI()
-        let exampleGest = UITapGestureRecognizer(target: self, action: #selector(exampleTaped))
-        titleLabel.addGestureRecognizer(exampleGest)
+
     }
     
-    @objc
-    private func exampleTaped(){
-        print("Clicou na Label")
-    }
-    
+   
     
     private func setupUI() {
         backgroundColor = .white
