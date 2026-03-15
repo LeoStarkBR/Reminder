@@ -10,6 +10,8 @@ import UIKit
 
 class LoginBottomSheetView: UIView {
     
+    public weak var delegate: LoginBottomShetViewDelegate?
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "login.label.title".localized
@@ -72,6 +74,8 @@ class LoginBottomSheetView: UIView {
         button.layer.cornerRadius = Metrics.medium
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(.white, for: .normal)
+        button.addTarget(LoginBottomSheetView.self, action: #selector(loginButtonDidTapped), for: .touchUpInside)
+        button.titleLabel?.font = Typography.subHeading
         return button
     }()
     
@@ -84,15 +88,13 @@ class LoginBottomSheetView: UIView {
     
     @objc
     private func exampleTaped(){
-        print("Clicou na lbael")
+        print("Clicou na Label")
     }
     
-    @objc
     
     private func setupUI() {
         backgroundColor = .white
         layer.cornerRadius = Metrics.small
-        addSubview(handleArea)
         addSubview(titleLabel)
         addSubview(emailTextField)
         addSubview(passwordTextField)
@@ -104,12 +106,8 @@ class LoginBottomSheetView: UIView {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            handleArea.topAnchor.constraint(equalTo: topAnchor, constant: -Metrics.small),
-            handleArea.centerXAnchor.constraint(equalTo: centerXAnchor),
-            handleArea.widthAnchor.constraint(equalToConstant: 40),
-            handleArea.heightAnchor.constraint(equalToConstant: 6),
             
-            titleLabel.topAnchor.constraint(equalTo: handleArea.bottomAnchor, constant: Metrics.huge),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: Metrics.huge),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.medium),
             
             emailTextField.topAnchor.constraint(equalTo: emailIndicator.bottomAnchor, constant: Metrics.small),
@@ -141,5 +139,12 @@ class LoginBottomSheetView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc
+    private func loginButtonDidTapped(){
+        let password = passwordTextField.text ?? ""
+        let user = emailTextField.text ?? ""
+        delegate?.sendLoginData(user: user, password: password)
     }
 }
